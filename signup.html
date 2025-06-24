@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Phishing Detector</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: url('https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
+            background-color: #000; /* Fallback color */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: auto; /* Scrollbar only when needed */
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 0;
+        }
+        .navbar {
+            background: rgba(0, 247, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border-bottom: 3px solid rgba(0, 247, 255, 0.4);
+            z-index: 2;
+            width: 100%;
+        }
+        .navbar-brand, .nav-link {
+            color: #00f7ff !important;
+            text-shadow: 0 0 10px rgba(0, 247, 255, 0.8);
+            font-weight: 600;
+        }
+        .nav-link:hover {
+            color: #6a00ff !important;
+            text-shadow: 0 0 10px rgba(106, 0, 255, 0.8);
+        }
+        .btn-login, .btn-signup {
+            border-radius: 15px;
+            font-weight: 600;
+            padding: 0.8rem 2rem;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+        }
+        .btn-login {
+            background: #00f7ff;
+            border: none;
+            color: #000;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        .btn-signup {
+            background: #6a00ff;
+            border: none;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        .btn-login:hover {
+            background: #00d4db;
+            box-shadow: 0 0 25px rgba(0, 247, 255, 0.9);
+            transform: scale(1.05);
+        }
+        .btn-signup:hover {
+            background: #5a00d4;
+            box-shadow: 0 0 25px rgba(106, 0, 255, 0.9);
+            transform: scale(1.05);
+        }
+        .container {
+            background: rgba(0, 247, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(0, 247, 255, 0.3);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 450px;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease-in-out;
+            margin-top: 100px;
+             /* Add some margin to avoid sticking to top/bottom */
+        }
+        h1 {
+            color: #00f7ff;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 15px rgba(0, 247, 255, 0.9);
+        }
+        .form-label {
+            color: #00f7ff;
+            text-shadow: 0 0 10px rgba(0, 247, 255, 0.8);
+        }
+        .form-control {
+            border-radius: 10px;
+            border: 2px solid rgba(0, 247, 255, 0.3);
+            background: rgba(0, 247, 255, 0.15);
+            color: #fff;
+            text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+        .form-control::placeholder {
+            color: rgba(0, 247, 255, 0.7);
+            text-shadow: none;
+        }
+        .form-control:focus {
+            border-color: #6a00ff;
+            box-shadow: 0 0 15px rgba(106, 0, 255, 0.8);
+            background: rgba(0, 247, 255, 0.2);
+            color: #fff;
+        }
+        .btn-primary {
+            background: #00f7ff;
+            border: none;
+            border-radius: 15px;
+            padding: 0.8rem 2rem;
+            font-weight: 600;
+            color: #000;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: #00d4db;
+            box-shadow: 0 0 25px rgba(0, 247, 255, 0.9);
+            transform: scale(1.05);
+        }
+        .alert {
+            background: rgba(0, 247, 255, 0.1);
+            color: #6a00ff;
+            border: 1px solid #6a00ff;
+            text-shadow: 0 0 10px rgba(106, 0, 255, 0.8);
+        }
+        .text-center a {
+            color: #6a00ff;
+            text-shadow: 0 0 10px rgba(106, 0, 255, 0.8);
+            text-decoration: none;
+        }
+        .text-center a:hover {
+            color: #00f7ff;
+            text-shadow: 0 0 10px rgba(0, 247, 255, 0.8);
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Phishing Detector</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="/login" class="btn btn-login me-2">Login</a>
+                    <a href="/signup" class="btn btn-signup">Signup</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Signup</h1>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Signup Form -->
+        <form method="POST" action="/signup">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <div class="mb-3">
+                <label for="confirm_password" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Signup</button>
+        </form>
+        <p class="text-center mt-3">
+            <a href="/login">Already have an account? Login</a>
+        </p>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

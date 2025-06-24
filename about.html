@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Phishing Detector</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* Background Video */
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 0;
+        }
+        .navbar {
+            background: rgba(0, 247, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border-bottom: 3px solid rgba(0, 247, 255, 0.4);
+            z-index: 2;
+        }
+        .navbar-brand, .nav-link {
+            color: #00f7ff !important;
+            text-shadow: 0 0 8px rgba(0, 247, 255, 0.6);
+            font-weight: 600;
+        }
+        .nav-link:hover {
+            color: #6a00ff !important;
+            text-shadow: 0 0 8px rgba(106, 0, 255, 0.6);
+        }
+        .btn-login, .btn-signup {
+            border-radius: 15px;
+            font-weight: 600;
+            padding: 0.8rem 2rem;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+        }
+        .btn-login {
+            background: #00f7ff;
+            border: none;
+            color: #000;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        .btn-signup {
+            background: #6a00ff;
+            border: none;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        .btn-login:hover {
+            background: #00d4db;
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.8);
+            transform: scale(1.05);
+        }
+        .btn-signup:hover {
+            background: #5a00d4;
+            box-shadow: 0 0 20px rgba(106, 0, 255, 0.8);
+            transform: scale(1.05);
+        }
+        .container {
+            background: rgba(0, 247, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(0, 247, 255, 0.3);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease-in-out;
+            margin-top: 200px;
+        
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        h1, p {
+            color: #00f7ff;
+            text-align: center;
+            text-shadow: 0 0 8px rgba(0, 247, 255, 0.6);
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- Background Video -->
+    <video autoplay muted loop id="background-video">
+        <source src="https://videos.pexels.com/video-files/3209829/3209829-hd_1920_1080_30fps.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Phishing Detector</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="/login" class="btn btn-login me-2">Login</a>
+                    <a href="/signup" class="btn btn-signup">Signup</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>About Us</h1>
+        <p>
+            Welcome to Phishing Detector! We help you stay safe online by detecting phishing attempts in URLs, emails, and offer letters. 
+            Our advanced machine learning models and rule-based checks identify potential threats, including fake job notifications and fraudulent company emails.
+        </p>
+        <p>
+            Stay secure with us—check your content today!
+        </p>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

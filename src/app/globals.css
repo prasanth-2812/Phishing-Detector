@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #1c252e;
+  --soft-blue: #f0f7ff;
+  --dental-cyan: #00bcd4;
+  --brand-color: #26A69A;
+  --brand-dark: #00796B;
+  --brand-accent: #4DD0E1;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+@layer components {
+  .glass {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .section-padding {
+    @apply py-20 px-6 md:px-12 lg:px-24;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-dark via-brand to-brand-accent;
+  }
+
+  .btn-primary {
+    @apply px-8 py-3 bg-brand text-white rounded-full font-medium transition-all hover:bg-brand-dark hover:shadow-lg active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply px-8 py-3 bg-transparent border-2 border-brand text-brand rounded-full font-medium transition-all hover:bg-brand/5 active:scale-95;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--soft-blue);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.lenis.lenis-smooth {
+  height: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
